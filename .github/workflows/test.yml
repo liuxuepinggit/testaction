@@ -2,10 +2,21 @@ name: learn-github-actions
 run-name: ${{ github.actor }} is learning GitHub Actions
 on: [push]
 jobs:
-  check-bats-version:
+  build-amd64:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - run: sudo apt-get update && sudo apt-get install dpkg-dev
-      - run: pwd && ls 
+      - name: checkout git    
+        uses: actions/checkout@v4
+      - name: update apt
+        run: |
+          sudo apt-get update && sudo apt-get install dpkg-dev
+      - name : get arch
+        run: |
+          uname -r 
+      - name: download build dep
+        run: |
+          sudo apt-get build-dep ./ 
+      - nmae: build package
+        run: |
+          dpkg-buildpackage -us -uc -b 
 
