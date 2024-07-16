@@ -23,4 +23,10 @@ jobs:
       - name: build package
         run: |
           cd ./*/ && dpkg-buildpackage -us -uc -b 
-
+      - name: upload debs
+        uses: actions/upload-artifact@v3
+        with:
+          name: debs
+          path: |
+            *deb
+            *udeb
