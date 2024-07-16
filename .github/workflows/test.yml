@@ -16,7 +16,7 @@ jobs:
       - name: download build dep
         run: |
           sudo apt-get build-dep ./ 
-      - nmae: build package
+      - name: build package
         run: |
           dpkg-buildpackage -us -uc -b 
 
