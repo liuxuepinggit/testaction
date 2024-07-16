@@ -15,6 +15,7 @@ jobs:
           uname -r 
       - name: download build dep
         run: |
+          ls
           sudo apt-get build-dep ./ 
       - name: build package
         run: |
