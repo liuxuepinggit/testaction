@@ -9,14 +9,17 @@ jobs:
         uses: actions/checkout@v4
       - name: update apt
         run: |
-          sudo apt-get update && sudo apt-get install dpkg-dev
+          sudo apt-get update && sudo apt-get install -y dpkg-dev
       - name : get arch
         run: |
           uname -r 
+      - name: extra code
+        run : |
+          dpkg-source -x *dsc
       - name: download build dep
         run: |
           ls
-          sudo apt-get build-dep ./ 
+          sudo apt-get build-dep -y ./*/
       - name: build package
         run: |
           dpkg-buildpackage -us -uc -b 
