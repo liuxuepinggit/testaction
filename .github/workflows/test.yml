@@ -30,3 +30,17 @@ jobs:
           path: |
             *deb
             *udeb
+
+  download-artifact:
+    runs-on: ubuntu-latest
+    needs: [build-amd64]
+    steps:
+      - name : lintiancheck
+        uses: actions/download-artifact@v3
+        with:
+          name: debs
+      - name: list debs
+        run: 
+          ls -al
+
+
