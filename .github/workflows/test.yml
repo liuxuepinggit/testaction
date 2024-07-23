@@ -29,8 +29,6 @@ jobs:
           name: debs
           path: |
             *deb
-            *udeb
-            *.changes
 
   check-lintian:
     runs-on: ubuntu-latest
@@ -43,7 +41,7 @@ jobs:
       - name: lintian check
         run: |
           sudo apt-get update && sudo apt-get install -y lintian 
-          lintian *.changes
+          lintian *.deb
           
 
 
