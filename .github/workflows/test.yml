@@ -10,7 +10,7 @@ jobs:
       - name: checkout git    
         uses: actions/checkout@v4
       - name: get github env
-        run : echo "base ref:$GITHUB_BASE_REF, head ref:$GITHUB_HEAD_REF, ref:GITHUB_REF"
+        run : echo "base ref:$GITHUB_BASE_REF, head ref:$GITHUB_HEAD_REF, ref:$GITHUB_REF"
       - name: update apt
         run: |
           sudo apt-get update && sudo apt-get install -y dpkg-dev
