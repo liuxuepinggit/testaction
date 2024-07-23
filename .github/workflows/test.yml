@@ -1,12 +1,16 @@
 name: learn-github-actions
 run-name: ${{ github.actor }} is learning GitHub Actions
-on: [push]
+on: 
+  pull_request:
+    branches: main
 jobs:
   build-amd64:
     runs-on: ubuntu-latest
     steps:
       - name: checkout git    
         uses: actions/checkout@v4
+      - name: get github env
+        run : echo "base ref:$GITHUB_BASE_REF, head ref:$GITHUB_HEAD_REF, ref:GITHUB_REF"
       - name: update apt
         run: |
           sudo apt-get update && sudo apt-get install -y dpkg-dev
